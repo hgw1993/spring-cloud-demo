@@ -1,0 +1,19 @@
+server:
+  port: 10001
+spring:
+  application:
+    name: spring-cloud-config-client
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    bus:
+      trace:
+        enabled: true        # 开启消息追踪
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh

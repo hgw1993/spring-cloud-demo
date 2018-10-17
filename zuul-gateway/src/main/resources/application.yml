@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: spring-cloud-zuul
+  zipkin:
+    base-url: http://127.0.0.1:9411
+  sleuth:
+    sampler:
+      probability: 1.0
+server:
+  port: 8888
+
+zuul:
+  routes:
+    consumer:
+      path: /producer/**
+      serviceId: spring-cloud-producer
+  host:
+    connect-timeout-millis: 6000
+  retryable: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+
+ribbon:
+  ReadTimeout: 60000       # 设置超时时间，如果使用默认配置，请求很容易超时com.netflix.zuul.exception.ZuulException：Hystrix Readed time out
+  ConnectTimeout: 60000
+  MaxAutoRetries: 2
+  MaxAutoRetriesNextServer: 2
+
+
+# Spring Boot 2.0之后，使用EnableZipkinServer创建自定义的zipkin服务器已经被废弃
+# 获取最新发布的zipkin服务器，一个可执行的jar
+#
+# curl -sSL https://zipkin.io/quickstart.sh | bash -s

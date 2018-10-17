@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: spring-cloud-producer
+  zipkin:
+    base-url: http://127.0.0.1:9411     # 指定了Zipkin服务器的地址
+  sleuth:
+    sampler:
+      probability: 1.0                  #
+server:
+  port: 9000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/

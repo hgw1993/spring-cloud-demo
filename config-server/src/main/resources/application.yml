@@ -1,0 +1,20 @@
+server:
+  port: 10000
+spring:
+  application:
+    name: spring-cloud-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/hgws/spring-cloud-config-repository    # 配置git仓库的地址
+          search-paths: config-reps                                     #git仓库地址下的相对地址，可以配置多个，用","分割
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/               #注册中心eureka地址
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
