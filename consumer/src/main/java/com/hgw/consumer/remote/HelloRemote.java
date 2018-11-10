@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * name:：远程服务名，即spring.application.name配置的名称
  */
-@FeignClient(name = "spring-cloud-producer",fallback = HelloRemoteHystrix.class)
+@FeignClient(name = "${request.server.name}",fallback = HelloRemoteHystrix.class)
 public interface HelloRemote {
 
     /**
@@ -21,5 +21,5 @@ public interface HelloRemote {
      * @return
      */
     @RequestMapping(value = "hello")
-    public String hello(@RequestParam(value = "name")String name);
+    String hello(@RequestParam(value = "name")String name);
 }

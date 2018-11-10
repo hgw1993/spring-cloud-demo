@@ -10,3 +10,21 @@ eureka:
 feign:
   hystrix:
     enabled: true
+
+fegin:
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true
+request:
+  server:
+    name: spring-cloud-producer
+
+##  设置hytrix 的资源隔离模式为 信号量模式
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+         strategy: SEMAPHORE

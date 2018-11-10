@@ -11,9 +11,12 @@ server:
 
 zuul:
   routes:
-    consumer:
+    producer:
       path: /producer/**
       serviceId: spring-cloud-producer
+    consumer:
+      path: /consumer/**
+      serviceId: spring-cloud-consumer
   host:
     connect-timeout-millis: 6000
   retryable: true
